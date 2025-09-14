@@ -1,0 +1,6 @@
+pyyaml
+jinja2
+boto3
+botocore
+fastapi
+uvicorn
