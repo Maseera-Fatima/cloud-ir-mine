@@ -1,0 +1,14 @@
+playbook_id: aws-unauthorized-ec2-login
+incident_type: unauthorized_access
+description: Auto-response to AWS EC2 login from risky IP
+cloud_provider: aws
+steps:
+  - action: snapshot_disk
+    parameters:
+      instance_id: "{{incident.instance_id}}"
+  - action: isolate_vm
+    parameters:
+      instance_id: "{{incident.instance_id}}"
+  - action: revoke_user_access
+    parameters:
+      username: "{{incident.username}}"
